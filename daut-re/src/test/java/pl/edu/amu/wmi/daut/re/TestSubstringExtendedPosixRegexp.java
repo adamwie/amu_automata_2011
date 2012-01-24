@@ -1,6 +1,6 @@
 package pl.edu.amu.wmi.daut.re;
 
-import pl.edu.amu.wmi.daut.base.*;
+
 import junit.framework.TestCase;
 
 /**
@@ -86,12 +86,12 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
      * @author Adam Wierzbiński
      */
     public void test6() {
-        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a*b?c*a");
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("ab?c*a");
 
         assertTrue(subs.accepts("abca"));
         assertTrue(subs.accepts("aba"));
-        assertTrue(subs.accepts("bca"));
-        assertTrue(subs.accepts("aaaaaaaaacca"));
+        assertFalse(subs.accepts("bca"));
+        assertTrue(subs.accepts("acca"));
         assertFalse(subs.accepts("abbca"));
 
     }
@@ -101,8 +101,20 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
      * @author Adam Wierzbiński
      */
     public void test7() {
-        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a*b?c*");
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a*b?c*a");
 
         assertTrue(subs.accepts("abca"));
+    }
+
+    public void test8() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("^a$");
+
+        assertTrue(subs.accepts("a"));
+    }
+
+    public void test9() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("aa[a-b]*b?[a-c]");
+
+        assertTrue(subs.accepts("aabbc"));
     }
 }

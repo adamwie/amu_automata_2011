@@ -1,7 +1,16 @@
 package pl.edu.amu.wmi.daut.re;
 
+
 import java.util.ArrayList;
-import pl.edu.amu.wmi.daut.base.*;
+import pl.edu.amu.wmi.daut.base.Acceptor;
+import pl.edu.amu.wmi.daut.base.AnyTransitionLabel;
+import pl.edu.amu.wmi.daut.base.AutomatonByRecursion;
+import pl.edu.amu.wmi.daut.base.AutomatonSpecification;
+import pl.edu.amu.wmi.daut.base.CharClassTransitionLabel;
+import pl.edu.amu.wmi.daut.base.CharTransitionLabel;
+import pl.edu.amu.wmi.daut.base.NaiveAutomatonSpecification;
+import pl.edu.amu.wmi.daut.base.State;
+
 
 /**
  * SubstringExtendPosixRegexp
@@ -373,10 +382,7 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
 
     @Override
     public boolean accepts(String text) {
-        if (isSubstring) {
             return aut.accepts(text);
-        }
-        return false;
     }
     private AutomatonSpecification automaton = new NaiveAutomatonSpecification();
     private AutomatonByRecursion aut = new AutomatonByRecursion(automaton);

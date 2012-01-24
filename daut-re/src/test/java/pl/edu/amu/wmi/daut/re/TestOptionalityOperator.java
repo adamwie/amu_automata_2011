@@ -61,9 +61,5 @@ public class TestOptionalityOperator extends TestCase {
         ArrayList<String> params = new ArrayList<String>();
         assertEquals(factory.createOperator(params).getClass(),
             new OptionalityOperator().getClass());
-                SubstringExtendedPosixRegexp rege = new SubstringExtendedPosixRegexp("[0-9]*a");
-                
-                assertTrue(rege.accepts("a"));
-                //assertFalse(rege.accepts("a"));
     }
 }
