@@ -117,4 +117,26 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
 
         assertTrue(subs.accepts("aabbc"));
     }
+    
+    public void test10() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-b]");
+
+        assertTrue(subs.accepts("a"));
+    }
+    
+    public void test11() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-b][c-d]?[a-z]*");
+
+        assertTrue(subs.accepts("azzz"));
+    }
+    public void test12() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-b][c-d]?[a-z]*[a-b]");
+
+        assertTrue(subs.accepts("azzzb"));
+    }
+    public void test13() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a+b?ca+");
+
+        assertTrue(subs.accepts("abca"));
+    }
 }
