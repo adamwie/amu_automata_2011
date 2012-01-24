@@ -1,11 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.edu.amu.wmi.daut.re;
 
 import pl.edu.amu.wmi.daut.base.*;
 import junit.framework.TestCase;
+
 /**
  *
  * @author Adam Wierzbiński
@@ -13,9 +10,9 @@ import junit.framework.TestCase;
 public class TestSubstringExtendedPosixRegexp extends TestCase {
 
     /**
-    *
-    * @author Adam Wierzbiński
-    */
+     *
+     * @author Adam Wierzbiński
+     */
     public void test1() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-z]*ab[0-9a-z]+");
 
@@ -26,10 +23,11 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertFalse(subs.accepts("adamab"));
         assertFalse(subs.accepts("as1"));
     }
+
     /**
-    *
-    * @author Adam Wierzbiński
-    */
+     *
+     * @author Adam Wierzbiński
+     */
     public void test2() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp(".");
 
@@ -38,10 +36,11 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertTrue(subs.accepts("ź"));
 
     }
+
     /**
-    *
-    * @author Adam Wierzbiński
-    */
+     *
+     * @author Adam Wierzbiński
+     */
     public void test3() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-z]?[0-9]*[a-b]?");
 
@@ -51,10 +50,11 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertTrue(subs.accepts("ab"));
 
     }
+
     /**
-    *
-    * @author Adam Wierzbiński
-    */
+     *
+     * @author Adam Wierzbiński
+     */
     public void test4() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-z]?[0-9]+[a-b]?");
 
@@ -65,10 +65,11 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertFalse(subs.accepts("ab"));
 
     }
+
     /**
-    *
-    * @author Adam Wierzbiński
-    */
+     *
+     * @author Adam Wierzbiński
+     */
     public void test5() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-z]?[0-9][a-b]?");
 
@@ -79,10 +80,11 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertFalse(subs.accepts("ab"));
 
     }
+
     /**
-    *
-    * @author Adam Wierzbiński
-    */
+     *
+     * @author Adam Wierzbiński
+     */
     public void test6() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a*b?c*a");
 
@@ -93,16 +95,14 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertFalse(subs.accepts("abbca"));
 
     }
+
     /**
-    *
-    * @author Adam Wierzbiński
-    */
+     *
+     * @author Adam Wierzbiński
+     */
     public void test7() {
-        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[c-z]");
-        SubstringExtendedPosixRegexp subs2 = new SubstringExtendedPosixRegexp("z.*.?");
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a*b?c*");
 
-        assertTrue(subs.accepts("c"));
-        assertTrue(subs2.accepts("zaa"));
-
+        assertTrue(subs.accepts("abca"));
     }
 }
