@@ -151,7 +151,7 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                         automaton.addTransition(questionStates.get(questionState - 1),
                                 questionStates.get(questionState),
                                 new CharClassTransitionLabel(regexpart));
-                        isQuestion = false;
+                        //isQuestion = false;
                     }
                     if ((i = +index + 1) == end) {
                         automaton.markAsFinal(questionStates.get(questionState));
@@ -172,7 +172,9 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                                 new CharClassTransitionLabel(regexpart));
                     }
 
-                    if (isQuestion) {
+                    if (isQuestion && questionStates.size() > 1) {
+                        
+                    } else if (isQuestion) {
                         automaton.addTransition(questionStates.get(questionState),
                                 states.get(state), new CharClassTransitionLabel(regexpart));
                     }
@@ -253,6 +255,7 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                     questionStates.add(automaton.addState());
                     questionState++;
                     isQuestion = true;
+                    
 
                     if (!states.isEmpty()) {
                         automaton.addTransition(states.get(state),
@@ -265,7 +268,7 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                     if ((questionStates.size() > 1) && states.isEmpty()) {
                         automaton.addTransition(questionStates.get(questionState - 1),
                                 questionStates.get(questionState), new CharTransitionLabel(a));
-                        isQuestion = false;
+                        //isQuestion = false;
                     }
                     if (i + 1 == end) {
                         automaton.markAsFinal(questionStates.get(questionState));
@@ -376,7 +379,7 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                     if ((questionStates.size() > 1) && states.isEmpty()) {
                         automaton.addTransition(questionStates.get(questionState - 1),
                                 questionStates.get(questionState), new AnyTransitionLabel());
-                        isQuestion = false;
+                        //isQuestion = false;
                     }
                     if (i + 1 == end) {
                         automaton.markAsFinal(questionStates.get(questionState));

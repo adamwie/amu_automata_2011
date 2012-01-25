@@ -171,9 +171,9 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
     }
     
     public void test19() {
-        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp(".?.?");
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp(".?.?.");
 
-        assertTrue(subs.accepts(""));
+        assertTrue(subs.accepts("abc"));
     }
     
 }
