@@ -1,6 +1,5 @@
 package pl.edu.amu.wmi.daut.re;
 
-
 import java.util.ArrayList;
 import pl.edu.amu.wmi.daut.base.Acceptor;
 import pl.edu.amu.wmi.daut.base.AnyTransitionLabel;
@@ -10,7 +9,6 @@ import pl.edu.amu.wmi.daut.base.CharClassTransitionLabel;
 import pl.edu.amu.wmi.daut.base.CharTransitionLabel;
 import pl.edu.amu.wmi.daut.base.NaiveAutomatonSpecification;
 import pl.edu.amu.wmi.daut.base.State;
-
 
 /**
  * SubstringExtendPosixRegexp
@@ -269,7 +267,7 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                                 questionStates.get(questionState), new CharTransitionLabel(a));
                         isQuestion = false;
                     }
-                    if ((i = +index + 1) == end) {
+                    if (i + 1 == end) {
                         automaton.markAsFinal(questionStates.get(questionState));
                         break;
                     }
@@ -304,14 +302,16 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                     state++;
 
                     if (state != 0) {
-                        automaton.addTransition(states.get(state - 1),states.get(state), new AnyTransitionLabel());
+                        automaton.addTransition(states.get(state - 1),
+                                states.get(state), new AnyTransitionLabel());
                     } else {
                         automaton.addTransition(s0, states.get(state),
                                 new AnyTransitionLabel());
                     }
 
                     if (isQuestion) {
-                        automaton.addTransition(questionStates.get(questionState), states.get(state), new AnyTransitionLabel());
+                        automaton.addTransition(questionStates.get(questionState),
+                                states.get(state), new AnyTransitionLabel());
                     }
 
                     break;
@@ -326,9 +326,11 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                     }
 
                     if (isQuestion && states.isEmpty()) {
-                        automaton.addTransition(questionStates.get(questionState), s0, new AnyTransitionLabel());
+                        automaton.addTransition(questionStates.get(questionState),
+                                s0, new AnyTransitionLabel());
                     } else if (isQuestion) {
-                        automaton.addTransition(questionStates.get(questionState), states.get(state), new AnyTransitionLabel());
+                        automaton.addTransition(questionStates.get(questionState),
+                                states.get(state), new AnyTransitionLabel());
                     }
 
                     i++;
@@ -340,15 +342,19 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                     state++;
 
                     if (state == 0) {
-                        automaton.addTransition(s0, states.get(state), new AnyTransitionLabel());
+                        automaton.addTransition(s0, states.get(state),
+                                new AnyTransitionLabel());
                         automaton.addLoop(states.get(state), new AnyTransitionLabel());
                     } else {
-                        automaton.addTransition(states.get(state - 1), states.get(state), new AnyTransitionLabel());
+                        automaton.addTransition(states.get(state - 1), states.get(state),
+                                new AnyTransitionLabel());
                         automaton.addLoop(states.get(state), new AnyTransitionLabel());
                     }
                     if (isQuestion) {
-                        automaton.addLoop(questionStates.get(questionState), new AnyTransitionLabel());
-                        automaton.addTransition(questionStates.get(questionState), states.get(state), new AnyTransitionLabel());
+                        automaton.addLoop(questionStates.get(questionState),
+                                new AnyTransitionLabel());
+                        automaton.addTransition(questionStates.get(questionState), states.get(state),
+                                new AnyTransitionLabel());
                     }
 
                     i++;
@@ -360,16 +366,19 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                     isQuestion = true;
 
                     if (!states.isEmpty()) {
-                        automaton.addTransition(states.get(state), questionStates.get(questionState), new AnyTransitionLabel());
+                        automaton.addTransition(states.get(state),
+                                questionStates.get(questionState), new AnyTransitionLabel());
                     } else {
-                        automaton.addTransition(s0, questionStates.get(questionState), new AnyTransitionLabel());
+                        automaton.addTransition(s0, questionStates.get(questionState),
+                                new AnyTransitionLabel());
                     }
 
                     if ((questionStates.size() > 1) && states.isEmpty()) {
-                        automaton.addTransition(questionStates.get(questionState - 1), questionStates.get(questionState), new AnyTransitionLabel());
+                        automaton.addTransition(questionStates.get(questionState - 1),
+                                questionStates.get(questionState), new AnyTransitionLabel());
                         isQuestion = false;
                     }
-                    if ((i++) == end) {
+                    if (i + 1 == end) {
                         automaton.markAsFinal(questionStates.get(questionState));
                         break;
                     }
@@ -382,13 +391,16 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
                     state++;
 
                     if (state != 0) {
-                        automaton.addTransition(states.get(state - 1), states.get(state), new AnyTransitionLabel());
+                        automaton.addTransition(states.get(state - 1),
+                                states.get(state), new AnyTransitionLabel());
                     } else {
-                        automaton.addTransition(s0, states.get(state), new AnyTransitionLabel());
+                        automaton.addTransition(s0, states.get(state),
+                                new AnyTransitionLabel());
                     }
 
                     if (isQuestion) {
-                        automaton.addTransition(questionStates.get(questionState), states.get(state), new AnyTransitionLabel());
+                        automaton.addTransition(questionStates.get(questionState),
+                                states.get(state), new AnyTransitionLabel());
                     }
 
                 }
@@ -405,7 +417,8 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
 //        if(isSubstring) {
 //            State finals = automaton.addState();
 //            automaton.markAsFinal(finals);
-//            automaton.addTransition(states.get(state), finals, new EndOfTextOrLineTransitionLabel());
+//            automaton.addTransition(states.get(state),
+        //finals, new EndOfTextOrLineTransitionLabel());
 //        }
     }
 
@@ -418,7 +431,7 @@ public class SubstringExtendedPosixRegexp implements Acceptor {
 
     @Override
     public boolean accepts(String text) {
-            return aut.accepts(text);
+        return aut.accepts(text);
     }
     private AutomatonSpecification automaton = new NaiveAutomatonSpecification();
     private AutomatonByRecursion aut = new AutomatonByRecursion(automaton);

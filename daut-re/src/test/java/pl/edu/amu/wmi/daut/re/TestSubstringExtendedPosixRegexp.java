@@ -147,9 +147,9 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
     }
     
     public void test15() {
-        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("sc?");
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("sc?a");
 
-        assertTrue(subs.accepts("s"));
+        assertTrue(subs.accepts("sa"));
     }
     
     public void test16() {
