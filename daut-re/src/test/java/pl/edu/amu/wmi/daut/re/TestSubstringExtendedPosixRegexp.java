@@ -170,4 +170,10 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertTrue(subs.accepts("sbbbbbbbbbbaa"));
     }
     
+    public void test19() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp(".?.?");
+
+        assertTrue(subs.accepts(""));
+    }
+    
 }
