@@ -106,100 +106,157 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertTrue(subs.accepts("abca"));
     }
 
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test8() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("^a$");
 
         assertTrue(subs.accepts("a"));
     }
 
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test9() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("aa[a-b]*b?[a-c]");
 
         assertTrue(subs.accepts("aabbc"));
     }
-    
+
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test10() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-b]");
 
         assertTrue(subs.accepts("a"));
     }
-    
+
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test11() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-b][c-d]?[a-z]*");
 
         assertTrue(subs.accepts("azzz"));
     }
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test12() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-b][c-d]?[a-z]*[a-b]");
 
         assertTrue(subs.accepts("azzzb"));
     }
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test13() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a+b?e+ca+");
 
         assertTrue(subs.accepts("abeca"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test14() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a?b?");
 
         assertTrue(subs.accepts("a"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test15() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("sc?a");
 
         assertTrue(subs.accepts("sa"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test16() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp(".?.*.+");
 
         assertTrue(subs.accepts("sbbbbbbbbbbaa"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test17() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp(".+.*..");
 
         assertTrue(subs.accepts("sbbbbbbbbbbaa"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test18() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("..*");
 
         assertTrue(subs.accepts("sbbbbbbbbbbaa"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test19() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp(".?.?.");
 
         assertTrue(subs.accepts("abc"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test20() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-z][c-d][0-9]");
 
         assertTrue(subs.accepts("ac9"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test21() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("a.?.*");
 
         assertTrue(subs.accepts("abbbbb"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test22() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("abcd.+.?.");
 
         assertTrue(subs.accepts("abcd23"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test23() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("abcd.?");
 
         assertTrue(subs.accepts("abcd2"));
     }
-    
+    /**
+     *
+     * @author Adam Wierzbiński
+     */
     public void test24() {
         SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("ab?.a");
 
