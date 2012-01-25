@@ -176,4 +176,22 @@ public class TestSubstringExtendedPosixRegexp extends TestCase {
         assertTrue(subs.accepts("abc"));
     }
     
+    public void test20() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("[a-z][c-d][0-9]");
+
+        assertTrue(subs.accepts("ac9"));
+    }
+    
+    public void test21() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp(".?.*");
+
+        assertTrue(subs.accepts("bbbbb"));
+    }
+    
+    public void test22() {
+        SubstringExtendedPosixRegexp subs = new SubstringExtendedPosixRegexp("abcd.+.?.");
+
+        assertTrue(subs.accepts("abcd23"));
+    }
+    
 }
